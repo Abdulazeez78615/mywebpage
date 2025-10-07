@@ -1,0 +1,204 @@
+
+.wedding-container {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background: #fff8f0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  text-align: center;
+  font-family: 'Segoe UI', 'Avenir', Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wedding-header, .wedding-details, .wedding-footer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(215,38,96,0.08);
+  padding: 2.5em 3em;
+  margin-bottom: 2em;
+  font-size: 1.25em;
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.animated-images {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 2em;
+  width: 100%;
+}
+.animated-bride, .animated-groom {
+  width: 220px;
+  height: 320px;
+  object-fit: contain;
+  animation: float 2.5s ease-in-out infinite alternate;
+}
+
+.map-container {
+  margin-top: 2em;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .wedding-container {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 0;
+  }
+  .animated-bride, .animated-groom {
+    width: 120px;
+    height: 180px;
+  }
+  .details-card {
+    padding: 1.5em;
+    font-size: 1.1em;
+  }
+}
+
+.animated-images {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 2em;
+}
+.animated-bride, .animated-groom {
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+  animation: float 2.5s ease-in-out infinite alternate;
+}
+.details-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(215,38,96,0.08);
+  padding: 2.5em 3em;
+  margin-bottom: 2em;
+  font-size: 1.25em;
+}
+.map-container {
+  margin-top: 2em;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 900px) {
+  .wedding-container {
+    max-width: 700px;
+    padding: 2rem;
+  }
+  .animated-bride, .animated-groom {
+    width: 120px;
+    height: 180px;
+  }
+  .details-card {
+    padding: 1.5em;
+    font-size: 1.1em;
+  }
+}
+/* Wedding Page Custom Styles */
+
+.wedding-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: #fff8f0;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Segoe UI', 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+.wedding-header h1 {
+  font-size: 2.8em;
+  color: #d72660;
+  margin-bottom: 0.2em;
+  font-family: 'Dancing Script', cursive;
+}
+.wedding-header h2 {
+  font-size: 2em;
+  color: #1b1b1b;
+  margin-bottom: 1em;
+}
+
+.animated-images {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5em;
+}
+.animated-bride, .animated-groom {
+  width: 120px;
+  height: 180px;
+  object-fit: contain;
+  animation: float 2.5s ease-in-out infinite alternate;
+}
+.animated-bride {
+  animation-delay: 0.5s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-18px); }
+}
+
+.details-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(215,38,96,0.08);
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+}
+.details-card h3 {
+  color: #d72660;
+  margin-bottom: 0.8em;
+}
+.details-card p {
+  font-size: 1.1em;
+  margin: 0.4em 0;
+}
+
+.map-container {
+  margin-top: 1em;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.wedding-footer {
+  margin-top: 2em;
+  font-size: 1em;
+  color: #333;
+}
+.wedding-footer a {
+  color: #d72660;
+  font-weight: bold;
+  text-decoration: underline;
+}
+  color: #888;
+}
