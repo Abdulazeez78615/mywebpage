@@ -1,43 +1,75 @@
-
-import brideImg from './assets/bride-animated.gif';
-import groomImg from './assets/groom-animated.gif';
+import { useState, useEffect } from 'react';
 import './App.css';
+import bgImg from './assets/wedding-bg.jpg';
 
 function App() {
+  const [showDetails, setShowDetails] = useState(false);
+  const weddingDate = new Date('2025-12-15T18:00:00');
+  const [timeLeft, setTimeLeft] = useState({days: 0, hours: 0, minutes: 0, seconds: 0});
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date();
+      const diff = weddingDate - now;
+      if (diff > 0) {
+        setTimeLeft({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((diff / (1000 * 60)) % 60),
+          seconds: Math.floor((diff / 1000) % 60)
+        });
+      } else {
+        setTimeLeft({days: 0, hours: 0, minutes: 0, seconds: 0});
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [weddingDate]);
+
   return (
-    <div className="wedding-container">
-      <header className="wedding-header">
-        <h1>You're Invited!</h1>
-        <h2>Priya & Raj's Wedding</h2>
-      </header>
-      <section className="wedding-details">
-        <div className="animated-images">
-          <img src={brideImg} alt="Bride" className="animated-bride" />
-          <img src={groomImg} alt="Groom" className="animated-groom" />
+    <div className="hero-bg" style={{backgroundImage: `url(${bgImg})`}}>
+      <div className="hero-overlay">
+        <div className="hero-content">
+          {!showDetails ? (
+            <>
+              <p className="hero-greeting">Dear Guest,</p>
+              <h1 className="hero-names">Priya &amp; Raj</h1>
+              <p className="hero-desc">Will celebrate their wedding in:</p>
+              <div className="countdown-row">
+                <div className="countdown-circle"><span className="countdown-num">{timeLeft.days}</span><span className="countdown-label">days</span></div>
+                <div className="countdown-circle"><span className="countdown-num">{timeLeft.hours}</span><span className="countdown-label">hours</span></div>
+                <div className="countdown-circle"><span className="countdown-num">{timeLeft.minutes}</span><span className="countdown-label">minutes</span></div>
+                <div className="countdown-circle"><span className="countdown-num">{timeLeft.seconds}</span><span className="countdown-label">seconds</span></div>
+              </div>
+              <button className="hero-btn" onClick={() => setShowDetails(true)}>
+                <span role="img" aria-label="invitation">💌</span> View Invitation
+              </button>
+            </>
+          ) : (
+            <div className="details-card-popup">
+              <h2 className="details-title">Wedding Details</h2>
+              <p><strong>Date:</strong> 15th December 2025</p>
+              <p><strong>Time:</strong> 6:00 PM onwards</p>
+              <p><strong>Venue:</strong> Grand Palace Banquet Hall</p>
+              <p><strong>Address:</strong> 123 Celebration Avenue, Hyderabad, India</p>
+              <div className="map-container-popup">
+                <iframe
+                  title="Wedding Location"
+                  src="https://www.google.com/maps?q=14.481417,79.997167&hl=en&z=16&output=embed"
+                  width="100%"
+                  height="220"
+                  style={{ border: 0, borderRadius: '12px' }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+              <button className="hero-btn" onClick={() => setShowDetails(false)}>
+                Back
+              </button>
+            </div>
+          )}
         </div>
-        <div className="details-card">
-          <h3>Wedding Details</h3>
-          <p><strong>Date:</strong> 15th December 2025</p>
-          <p><strong>Time:</strong> 6:00 PM onwards</p>
-          <p><strong>Venue:</strong> Grand Palace Banquet Hall</p>
-          <p><strong>Address:</strong> 123 Celebration Avenue, Hyderabad, India</p>
-          <div className="map-container">
-            <iframe
-              title="Wedding Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.123456789!2d78.123456!3d17.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99e123456789%3A0x123456789abcdef!2sGrand%20Palace%20Banquet%20Hall!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-              width="100%"
-              height="250"
-              style={{ border: 0, borderRadius: '12px' }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-      <footer className="wedding-footer">
-        <p>Permanent Link: <a href="/" target="_blank">Open Wedding Page</a></p>
-      </footer>
+      </div>
     </div>
   );
 }
